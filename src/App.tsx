@@ -1,8 +1,11 @@
 import React from 'react';
-import './algorithm4th/index.ts';
+import NavbarTop from './components/navbarTop';
+import PCApplication from './comtainers/pc';
 function App() {
   return (
-    <div className="App" />
+    <div className="App">
+      <PCApplication />
+    </div>
   );
 }
 
