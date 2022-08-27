@@ -546,11 +546,26 @@ module.exports = function (webpackEnv) {
               ),
             },
             {
+              test: /(\.less)$/,
+              use: [
+                'style-loader',
+                'css-loader',
+                {
+                  loader: 'less-loader',
+                  options: {
+                    lessOptions: {
+                      javascriptEnabled: true,
+                    },
+                  },
+                },
+              ],
+            },
+            {
               test: lessRegex,
               exclude: lessModuleRegex,
               use: getStyleLoaders(
                 {
-                  importLoaders: 2,
+                  importLoaders: 3,
                   modules: {
                     localIdentName:'[local]',
                   },
@@ -563,7 +578,7 @@ module.exports = function (webpackEnv) {
             {
               test: lessModuleRegex,
               use: getStyleLoaders({
-                importLoaders: 2,
+                importLoaders: 3,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
                 modules: true,
                 getLocalIdent: getCSSModuleLocalIdent
